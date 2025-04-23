@@ -1,8 +1,9 @@
 package org.example.service;
 
+import org.example.data.models.Notification;
 import org.example.data.repository.NotificationRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,5 +18,9 @@ class NotificationServiceTest {
     @AfterEach
     void tearDown() {
         notificationRepository.delectAll();
+    }
+    @Test
+    public void testThatNotificationCanBeSentToTheReciever(){
+        Notification notification = new Notification();
     }
 }

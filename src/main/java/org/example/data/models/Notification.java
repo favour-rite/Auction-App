@@ -1,19 +1,22 @@
 package org.example.data.models;
 
 import lombok.Data;
+import org.example.data.enums.Role;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @Document(collection = "notifications")
 public class Notification {
     @Id
-    private String id;
+    private String NotificationId;
+    private Role role;
     private String message;
     private boolean read = false;
-    private Date createdAt = new Date();
-    private String userId;
+    private LocalDate createdAt;
+    private LocalTime time;
 
 }

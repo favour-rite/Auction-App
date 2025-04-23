@@ -2,10 +2,7 @@ package org.example.service;
 
 import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
-import org.example.exception.IncorrectEmailException;
-import org.example.exception.IncorrectPasswordException;
-import org.example.exception.InvalidEmailException;
-import org.example.exception.UserNotFoundException;
+import org.example.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

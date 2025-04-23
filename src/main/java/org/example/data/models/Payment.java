@@ -5,7 +5,8 @@ import org.example.data.enums.PaymentStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Data
 @Document(collection = "payments")
@@ -15,7 +16,8 @@ public class Payment {
     private String id;
     private double currentBidAmount;
     private String paymentMethod;
-    private Date paymentDate = new Date();
+    private LocalDate paymentDate;
+    private Double paymentAmount;
     private String userId;
     private PaymentStatus status;
     private String productId;
