@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navBar{
+    display: flex;
+    justify-content: space-between;
+}
+.navLinks ul{
+    list-style: none;
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+.navLinks ul a{
+    text-decoration: none;
+    display: flex;
+    color:black;
+}
+.searchForm{
+    text-align: center;
+}

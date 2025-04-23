@@ -1,0 +1,49 @@
+.notification-dashboard {
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.notifications {
+  margin-bottom: 40px;
+}
+
+.notifications h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #343a40;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.notification-card {
+  background-color: #fff;
+  padding: 15px 20px;
+  border-left: 5px solid #007BFF;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.notification-card p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.notification-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Role-specific colors (optional) */
+.seller-notifications .notification-card {
+  border-left-color: #28a745;
+}
+.buyer-notifications .notification-card {
+  border-left-color: #17a2b8;
+}
+.admin-notifications .notification-card {
+  border-left-color: #ffc107;
+}

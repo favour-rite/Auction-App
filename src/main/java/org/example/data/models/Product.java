@@ -7,7 +7,8 @@ import org.example.data.enums.AuctionStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -17,20 +18,20 @@ import java.util.List;
 public class Product {
 
     @Id
-    private String id;
+    private String iD;
     private String productName;
     private String description;
     private String category;
     private double startingPrice;
-    private Date auctionStartTime;
-    private Date auctionEndTime;
+    private LocalTime auctionStartTime;
+    private LocalTime auctionEndTime;
     private double currentBidAmount;
     private String imageUrl;
+
 
     private List<Bid> bids;
     private List<AuctionHistory> auctionHistory;
     private AuctionStatus auctionStatus;
-
 
 
 }

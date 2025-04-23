@@ -1,6 +1,5 @@
 package org.example.data.models;
 
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -32,10 +31,6 @@ public class User {
     private Gender gender;
     private AuctionStatus status;
     private Role role;
-
-
-
-
 
 
 

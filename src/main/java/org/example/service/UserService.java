@@ -16,7 +16,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User register(User user) throws UserNotFoundException {
+    public User register(User user) throws UserFoundException {
         User existingUser= userRepository.findByEmail(user.getEmail());
         if (existingUser == null) {
             user.setUserName(user.getUserName());
@@ -25,20 +25,24 @@ public class UserService {
             user.setRole(user.getRole());
             return userRepository.save(user);
         }
-        throw new IllegalArgumentException("User details already exists");
+        throw new UserFoundException("User details already exists");
     }
     public User login(String email, String password) throws UserNotFoundException, IncorrectPasswordException {
-        User user = userRepository.findByID()
-                .orElseThrow(() -> new  IllegalArgumentException ("User not found"));
-        if (user == null) { throw new UserNotFoundException("User not found");}
-        if(user.getEmail().equals(email) && user.getPassword().equals(password)) {throw new IncorrectEmailException("Incorrect  Email");}
-        if (!user.getPassword().equals(password)) {throw new IncorrectPasswordException("Incorrect password");}
+
+        User user = userRepository.findByEmail(email);
+        if(!user.getEmail().equals(email)){
+            throw new IncorrectEmailException("Incorrect email");
+        }
+        if (!user.getPassword().equals(password)) {
+            throw new IncorrectPasswordException("Incorrect password");
+        }
         return user;
     }
 
 
+
     public User updateProfile(User user)  throws InvalidEmailException {
-        User oldUser = userRepository.findByUsername(user.getUserName());
+        userRepository.findByEmail(user.getEmail());
         user.setUserName(user.getUserName());
         user.setEmail(user.getEmail());
         userRepository.update(user);

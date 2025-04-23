@@ -1,0 +1,55 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.role-selection {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.role-selection h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #444;
+}
+
+.roles {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.role-card {
+  display: inline-block;
+  width: 120px;
+  padding: 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+  text-align: center;
+}
+
+.role-card:hover {
+  background-color: #0056b3;
+  transform: translateY(-5px);
+}

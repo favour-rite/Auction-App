@@ -1,5 +1,6 @@
 package org.example.service;
 
+import com.mongodb.client.MongoClient;
 import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -38,11 +39,11 @@ class UserServiceTest {
         user.setRole(ADMIN);
         user.setGender(MALE);
 
-         User userTwo = userService.register(user);
-        assertEquals("Rachel Dennis", user.getUserName());
-        assertEquals("MoneyWise0@gmail.com", user.getEmail());
-        assertEquals(MALE, user.getGender());
-        assertEquals(ADMIN, user.getRole());
+         User user1 = userService.register(user);
+        assertEquals("Rachel Dennis", user1.getUserName());
+        assertEquals("MoneyWise0@gmail.com", user1.getEmail());
+        assertEquals(MALE, user1.getGender());
+        assertEquals(ADMIN, user1.getRole());
         assertEquals(1, userRepository.count());
 
     }
@@ -65,10 +66,10 @@ class UserServiceTest {
         user.setRole(BUYER);
         user.setGender(FEMALE);
         User user1 = userService.updateProfile(user);
-        assertEquals("Precious Regina", user.getUserName());
-        assertEquals("regina10@gmail.com", user.getEmail());
-        assertEquals(FEMALE, user.getGender());
-        assertEquals(BUYER, user.getRole());
+        assertEquals("Precious Regina", user1.getUserName());
+        assertEquals("regina10@gmail.com", user1.getEmail());
+        assertEquals(FEMALE, user1.getGender());
+        assertEquals(BUYER, user1.getRole());
         assertEquals(1, userRepository.count());
 
     }

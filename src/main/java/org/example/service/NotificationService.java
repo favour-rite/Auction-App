@@ -5,8 +5,6 @@ import org.example.data.models.User;
 import org.example.data.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 import java.util.List;
 
 

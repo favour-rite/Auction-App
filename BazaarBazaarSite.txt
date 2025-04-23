@@ -1,0 +1,35 @@
+AUCTION SITE
+
+1. Models are entity:
+	-- Bid
+	-- User
+	-- Product
+	-- Notification
+	-- Auction History
+	-- Payment
+
+2. Repository are
+	-- ALL MY MODEL CLASS ARE REPOSITORY IN THIS CASE
+
+
+3. Service are 
+	All my models are ls services
+
+
+4. DTOS(Request and Response) are 
+
+
+
+5. Controller are 
+
+
+	PESUDO CODE
+
+** placeABid-> itemId, bidAmount,bidderUserName:
+	-- Find Item by Id in the repoitory, if no found elsethrow an error ("product no found ")
+	-- Create a new object of bid
+	set the item, bid amount,username,Tmestamp(currentTime)
+	-- Save the id in a repository
+	-- update the item with current bid
+	-- setCurrentBid,item
+	return bid;

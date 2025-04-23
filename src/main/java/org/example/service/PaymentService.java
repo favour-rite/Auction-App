@@ -1,7 +1,6 @@
 package org.example.service;
 
 import org.example.data.enums.PaymentStatus;
-import org.example.data.models.Bid;
 import org.example.data.models.Payment;
 import org.example.data.repository.PaymentRepository;
 import org.example.exception.PaymentAlreadyConfirmedException;
@@ -13,11 +12,7 @@ public class PaymentService {
 
 
     @Autowired
-    private PaymentService paymentService;
-    @Autowired
     private PaymentRepository paymentRepository;
-    @Autowired
-    private PaymentStatus paymentStatus;
 
     public Payment confirmPayment(Payment payment) throws PaymentAlreadyConfirmedException {
         if (payment.getStatus() == PaymentStatus.CONFIRMED) {
