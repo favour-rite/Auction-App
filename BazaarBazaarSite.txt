@@ -12,23 +12,63 @@ AUCTION SITE
 	-- ALL MY MODEL CLASS ARE REPOSITORY IN THIS CASE
 
 
-3. Service are 
-	All my models are ls services
+3. Services:
+    A service is typically a class that contains the business logic of the application.
+    It is the place where your core logic for processing data or performing actions lives.
+    Services act as intermediaries between the Controller and Repository layers, and they encapsulate your business rules.
+
+   Responsibilities:
+   Handle business logic.
+   Coordinate different operations that involve data (e.g., interacting with the repository).
+   Perform validation or computation before passing data to controllers.
 
 
 4. DTOS(Request and Response) are 
 
 
+5. Controller
+    A service is typically a class that contains the business logic of the application.
+    It is the place where your core logic for processing data or performing actions lives.
+    Services act as intermediaries between the Controller and Repository layers, and they encapsulate your business rules.
 
-5. Controller are 
+    Responsibilities:
+    Handle business logic.
+    Coordinate different operations that involve data (e.g., interacting with the repository).
+    Perform validation or computation before passing data to controllers.
 
 
-	PESUDO CODE
+6. Mapper
 
+
+	                                PSEUDOCODE
+
+PRODUCT
+** createAProduct-> pass in the following details needed in creating a product
+   -- search the repository to check a product by Id
+   -- create new object of product
+   -- setProductDescription
+   -- setProductName,startingPrice,startTime,endTime,imageUrl,category
+   -- save it in a repository
+   return the product
+** updateProduct-> pass in required details
+   -- search the repository to check a product by Id
+   -- if not found throw PRODUCT NOT FOUND
+   -- create new object of product
+   -- set required details
+   -- save in a repository
+   return product
+** deleteProduct-> pass in required details
+   -- search the repository by id
+   -- if not found throw PRODUCT NOT FOUND
+   -- productRepository. delete product
+** viewProduct-> return productRepository. find by product id for a particular product
+
+
+BID
 ** placeABid-> itemId, bidAmount,bidderUserName:
-	-- Find Item by Id in the repoitory, if no found elsethrow an error ("product no found ")
+	-- Find Item by Id in the repository, if not found else throw an error ("product no found ")
 	-- Create a new object of bid
-	set the item, bid amount,username,Tmestamp(currentTime)
+	-- set the item, bid amount,username,Timestamp(currentTime)
 	-- Save the id in a repository
 	-- update the item with current bid
 	-- setCurrentBid,item

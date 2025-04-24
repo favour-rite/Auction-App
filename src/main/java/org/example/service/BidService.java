@@ -7,10 +7,7 @@ import org.example.data.models.User;
 import org.example.data.repository.BidRepository;
 import org.example.data.repository.ProductRepository;
 import org.example.data.repository.UserRepository;
-import org.example.exception.BidTooLowException;
-import org.example.exception.ProductNotFoundException;
-import org.example.exception.UnauthorizedActionException;
-import org.example.exception.UserNotFoundException;
+import org.example.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +70,7 @@ public class BidService {
     }
 
     public Bid viewBid(Bid bid) {
-        return bidRepository.findById(bid.getId());
+        return bidRepository.findById(bid.getId())
+                .orElseThrow(() -> new BidNotFoundException("Bid not found"));
     }
 }

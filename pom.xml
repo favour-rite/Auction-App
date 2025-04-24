@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.4</version>
+        <relativePath/>
+    </parent>
+
     <groupId>BazaarBazaar</groupId>
     <artifactId>BazaarBazaar</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -26,7 +33,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version> <!-- Updated to a more recent version -->
+            <version>1.18.32</version> <!-- Updated to a more recent version -->
             <scope>provided</scope>
         </dependency>
 
@@ -34,7 +41,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.4.4</version> <!-- Compatible version -->
+            <!--            <version>3.4.4</version> &lt;!&ndash; Compatible version &ndash;&gt;-->
             <scope>test</scope>
         </dependency>
 
@@ -42,14 +49,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.4</version> <!-- Compatible version -->
+            <!--            <version>3.4.4</version> &lt;!&ndash; Compatible version &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Boot Starter Data MongoDB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <version>3.4.3</version> <!-- Compatible version -->
+            <!--            <version>3.4.3</version> &lt;!&ndash; Compatible version &ndash;&gt;-->
         </dependency>
 
         <!-- Jakarta Validation API (Updated from javax.validation) -->
@@ -80,10 +87,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+<!--                <version>3.8.0</version>-->
                 <configuration>
                     <source>21</source>
                     <target>21</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
+<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
+
+                    <annotationProcessorPaths>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>1.18.38</version>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
