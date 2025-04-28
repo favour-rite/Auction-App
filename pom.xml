@@ -25,7 +25,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version> <!-- or latest -->
+<!--            <version>5.10.0</version> &lt;!&ndash; or latest &ndash;&gt;-->
             <scope>test</scope>
         </dependency>
 
@@ -36,14 +36,36 @@
             <version>1.18.32</version> <!-- Updated to a more recent version -->
             <scope>provided</scope>
         </dependency>
+        <!-- JWT Dependency -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version> <!-- The latest stable version -->
+        </dependency>
+        <!-- Other dependencies like Spring Boot, Lombok, etc. -->
 
-        <!-- Spring Boot Starter Test -->
+
+
+        <!--        &lt;!&ndash; Spring Boot Starter Test &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            &lt;!&ndash;            <version>3.4.4</version> &lt;!&ndash; Compatible version &ndash;&gt;&ndash;&gt;-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <!--            <version>3.4.4</version> &lt;!&ndash; Compatible version &ndash;&gt;-->
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
 
         <!-- Spring Boot Starter Web -->
         <dependency>
@@ -66,13 +88,13 @@
             <version>3.0.0</version> <!-- Updated to Jakarta Validation -->
         </dependency>
 
-        <!-- Optional: JUnit 4 (Only if you still need it) -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version> <!-- Works fine with JDK 21 -->
-            <scope>test</scope>
-        </dependency>
+        <!--        &lt;!&ndash; Optional: JUnit 4 (Only if you still need it) &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <version>4.13.1</version> &lt;!&ndash; Works fine with JDK 21 &ndash;&gt;-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
     </dependencies>
 

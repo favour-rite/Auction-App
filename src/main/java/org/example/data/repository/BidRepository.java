@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface BidRepository extends MongoRepository<Bid, String> {
     List<Bid> findByProductId(String productId);
-    void update(Bid bid);
     void delete(Bid bid);
 }

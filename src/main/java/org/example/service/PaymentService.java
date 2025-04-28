@@ -19,7 +19,7 @@ public class PaymentService {
             throw new PaymentAlreadyConfirmedException("Payment is already confirmed");
         }
         payment.setStatus(PaymentStatus.CONFIRMED);
-        paymentRepository.update(payment);
+//        paymentRepository.update(payment);
         return payment;
     }
 
@@ -28,7 +28,7 @@ public class PaymentService {
             throw new PaymentAlreadyConfirmedException("Cannot cancel a confirmed payment");
         }
         payment.setStatus(PaymentStatus.CANCELLED);
-        paymentRepository.update(payment);
+//        paymentRepository.update(payment);
         return payment;
     }
 

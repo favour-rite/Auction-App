@@ -1,6 +1,5 @@
 package org.example.service;
 
-import com.mongodb.client.MongoClient;
 import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -12,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.example.data.enums.Gender.FEMALE;
 import static org.example.data.enums.Gender.MALE;
-import static org.example.data.enums.Role.ADMIN;
-import static org.example.data.enums.Role.BUYER;
+import static org.example.data.enums.Role.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -30,9 +28,9 @@ class UserServiceTest {
     }
 
     @Test
-    public void testThatUserCanRegister() {
+    public void testThatUserAdminCanRegister() {
         User user = new User();
-        user.setUserName(" Rachel Dennis");
+        user.setUserName("Rachel Dennis");
         user.setPassword("babygirl123");
         user.setEmail("MoneyWise0@gmail.com");
         user.setRole(ADMIN);
@@ -47,12 +45,34 @@ class UserServiceTest {
 
     }
     @Test
-    public void testThatUserCanLogin() {
-        User user = userService.login("regina10@gmail.com", "happymood123");
-        assertEquals("Precious Regina", user.getUserName());
-        assertEquals("regina10@gmail.com", user.getEmail());
-        assertEquals(MALE, user.getGender());
-        assertEquals(ADMIN, user.getRole());
+    public void testThatUserSellerCanRegister() {
+        User user = new User();
+        user.setUserName("Precious Regina");
+        user.setPassword("happymood123");
+        user.setEmail("regina10@gmail.com");
+        user.setRole(SELLER);
+        user.setGender(FEMALE);
+
+        User user1 = userService.register(user);
+        assertEquals("Precious Regina", user1.getUserName());
+        assertEquals("regina10@gmail.com", user1.getEmail());
+        assertEquals(FEMALE, user1.getGender());
+        assertEquals(SELLER, user1.getRole());
+        assertEquals(1, userRepository.count());
+
+    }
+    @Test
+    public void testThatUserSellerCanLogin() {
+        User user = new User();
+        user.setPassword("happymood123");
+        user.setEmail("regina10@gmail.com");
+
+        User userloggedin = userService.login(user);
+
+        assertNotNull(userloggedin);
+        assertEquals("regina10@gmail.com", userloggedin.getEmail());
+        assertEquals(FEMALE, user.getGender());
+        assertEquals(SELLER, user.getRole());
         assertEquals(1, userRepository.count());
 
     }

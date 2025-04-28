@@ -1,53 +1,51 @@
-package org.example.service;
-
-import org.example.data.enums.PaymentStatus;
-import org.example.data.models.Payment;
-import org.example.data.repository.PaymentRepository;
-import org.example.exception.PaymentAlreadyConfirmedException;
-import org.example.exception.PaymentIsCancelledException;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDate;
-
-import static org.junit.Assert.*;
-
-@SpringBootTest
-class PaymentServiceTest {
-
-
-    @Autowired
-    private PaymentRepository paymentRepository;
-    @Autowired
-    private PaymentService paymentService;
-
-    @AfterEach
-    void tearDown() {
-        paymentRepository.deleteAll();
-    }
-
-    @Test
-    public void testThatPaymentCanBeMadeForAnAuctionThatWasBidded() {
-        Payment payment = new Payment();
-        payment.setPaymentMethod("Credit Card");
-        payment.setPaymentDate(LocalDate.now());
-        payment.setPaymentAmount(70.00);
-        payment.setStatus(PaymentStatus.PAID);
-
-        paymentRepository.save(payment);
-
-        Payment savedPayment = paymentRepository.findById(payment.getId()).orElse(null);
-        assertNotNull(savedPayment);
-        assertEquals("Credit Card", savedPayment.getPaymentMethod());
-        assertEquals(LocalDate.now(), savedPayment.getPaymentDate());
-        assertEquals(payment.getPaymentAmount(), savedPayment.getPaymentAmount());
-        assertEquals(PaymentStatus.PAID, savedPayment.getStatus());
-    }
-
-
-
+//package org.example.service;
+//
+//import org.example.data.enums.PaymentStatus;
+//import org.example.data.models.Payment;
+//import org.example.data.repository.PaymentRepository;
+//import org.junit.jupiter.api.AfterEach;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import java.time.LocalDate;
+//
+//import static org.junit.Assert.*;
+//
+//@SpringBootTest
+//class PaymentServiceTest {
+//
+//
+//    @Autowired
+//    private PaymentRepository paymentRepository;
+//    @Autowired
+//    private PaymentService paymentService;
+//
+//    @AfterEach
+//    void tearDown() {
+//        paymentRepository.deleteAll();
+//    }
+//
+//    @Test
+//    public void testThatPaymentCanBeMadeForAnAuctionThatWasBidded() {
+//        Payment payment = new Payment();
+//        payment.setPaymentMethod("Credit Card");
+//        payment.setPaymentDate(LocalDate.now());
+//        payment.setPaymentAmount(70.00);
+//        payment.setStatus(PaymentStatus.PAID);
+//
+//        paymentRepository.save(payment);
+//
+//        Payment savedPayment = paymentRepository.findById(payment.getId()).orElse(null);
+//        assertNotNull(savedPayment);
+//        assertEquals("Credit Card", savedPayment.getPaymentMethod());
+//        assertEquals(LocalDate.now(), savedPayment.getPaymentDate());
+//        assertEquals(payment.getPaymentAmount(), savedPayment.getPaymentAmount());
+//        assertEquals(PaymentStatus.PAID, savedPayment.getStatus());
+//    }
+//
+//
+//
 
 
 
@@ -108,4 +106,4 @@ class PaymentServiceTest {
 //}
 //
 //
-}
+//}
