@@ -44,7 +44,7 @@ class BidServiceTest {
         bid.setTimeStamp(LocalTime.of(2, 5, 45));
         bid.setBidAmount(bidAmount);
 
-        Bid bid1 = bidService.placeABidForAnAuctionBid( LocalTime.of(2, 5, 45));
+        Bid bid1 = bidService.placeABidForAnAuctionBid("auctionId123", LocalTime.now(), 150.0);
 
         assertEquals(LocalTime.of(2, 5, 45), bid1.getTimeStamp());
         assertEquals(bidAmount, bid1.getBidAmount(), 0.01);

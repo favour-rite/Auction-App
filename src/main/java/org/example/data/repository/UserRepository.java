@@ -1,6 +1,4 @@
 package org.example.data.repository;
-
-import jakarta.validation.constraints.NotBlank;
 import org.example.data.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -12,8 +10,5 @@ public interface UserRepository extends MongoRepository<User, String> {
     User findByID(String id);
     void deleteAll();
     User findByEmail(String email);
-    User findByUsername(@NotBlank(message = "Username is required") String userName);
-
 }
-
 

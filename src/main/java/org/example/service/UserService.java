@@ -35,14 +35,12 @@ public class UserService {
         }
         return user;
     }
-
-
-
     public User updateProfile(User user)  throws InvalidEmailException {
         userRepository.findByEmail(user.getEmail());
         user.setUserName(user.getUserName());
         user.setEmail(user.getEmail());
         userRepository.update(user);
+        userRepository.save(user);
         return user;
     }
 

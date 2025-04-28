@@ -21,11 +21,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <!-- JUnit for testing -->
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version> <!-- Updated to a more recent version -->
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version> <!-- or latest -->
             <scope>test</scope>
         </dependency>
 
@@ -74,12 +74,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-sync</artifactId>
-            <version>5.4.0</version>
-        </dependency>
     </dependencies>
 
     <build>

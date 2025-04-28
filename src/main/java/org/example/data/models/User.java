@@ -18,7 +18,6 @@ public class User {
 
     @Id
     private String id;
-
     @NotBlank(message = "Username is required")
     private String userName;
 
