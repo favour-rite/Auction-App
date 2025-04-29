@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -36,23 +37,17 @@
             <version>1.18.32</version> <!-- Updated to a more recent version -->
             <scope>provided</scope>
         </dependency>
-        <!-- JWT Dependency -->
         <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version> <!-- The latest stable version -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>3.4.3</version> <!-- Latest stable release -->
         </dependency>
-        <!-- Other dependencies like Spring Boot, Lombok, etc. -->
 
-
-
-        <!--        &lt;!&ndash; Spring Boot Starter Test &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            &lt;!&ndash;            <version>3.4.4</version> &lt;!&ndash; Compatible version &ndash;&gt;&ndash;&gt;-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!-- BCrypt dependency for password hashing -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,7 +60,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+<!--            <version>0.9.1</version>-->
+        </dependency>
 
         <!-- Spring Boot Starter Web -->
         <dependency>
@@ -88,13 +87,6 @@
             <version>3.0.0</version> <!-- Updated to Jakarta Validation -->
         </dependency>
 
-        <!--        &lt;!&ndash; Optional: JUnit 4 (Only if you still need it) &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>junit</groupId>-->
-<!--            <artifactId>junit</artifactId>-->
-<!--            <version>4.13.1</version> &lt;!&ndash; Works fine with JDK 21 &ndash;&gt;-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
 
     </dependencies>
 

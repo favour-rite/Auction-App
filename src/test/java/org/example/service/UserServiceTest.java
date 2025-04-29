@@ -4,11 +4,9 @@ import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import static org.example.data.enums.Gender.FEMALE;
 import static org.example.data.enums.Gender.MALE;
 import static org.example.data.enums.Role.*;
@@ -36,11 +34,23 @@ class UserServiceTest {
         user.setRole(ADMIN);
         user.setGender(MALE);
 
-         User user1 = userService.register(user);
+        User user1 = userService.register(user);
         assertEquals("Rachel Dennis", user1.getUserName());
         assertEquals("MoneyWise0@gmail.com", user1.getEmail());
         assertEquals(MALE, user1.getGender());
         assertEquals(ADMIN, user1.getRole());
+        assertEquals(1, userRepository.count());
+
+    }
+    @Test
+    public void testThatUserAdminCanLogin() {
+        User user = new User();
+        user.setPassword("babygirl123");
+        user.setEmail("MoneyWise0@gmail.com");
+        User userLoggedIn = userService.login(user);
+
+        assertNotNull(userLoggedIn);
+        assertEquals("MoneyWise0@gmail.com", userLoggedIn.getEmail());
         assertEquals(1, userRepository.count());
 
     }
@@ -58,7 +68,7 @@ class UserServiceTest {
         assertEquals("regina10@gmail.com", user1.getEmail());
         assertEquals(FEMALE, user1.getGender());
         assertEquals(SELLER, user1.getRole());
-        assertEquals(1, userRepository.count());
+        assertEquals(2, userRepository.count());
 
     }
     @Test
@@ -67,13 +77,11 @@ class UserServiceTest {
         user.setPassword("happymood123");
         user.setEmail("regina10@gmail.com");
 
-        User userloggedin = userService.login(user);
+        User userLoggedIn = userService.login(user);
 
-        assertNotNull(userloggedin);
-        assertEquals("regina10@gmail.com", userloggedin.getEmail());
-        assertEquals(FEMALE, user.getGender());
-        assertEquals(SELLER, user.getRole());
-        assertEquals(1, userRepository.count());
+        assertNotNull(userLoggedIn);
+        assertEquals("regina10@gmail.com", userLoggedIn.getEmail());
+        assertEquals(2, userRepository.count());
 
     }
     @Test

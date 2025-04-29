@@ -26,8 +26,14 @@ public class UserController {
             return userService.register(user);
         }
         @PostMapping("/login")
-        public ResponseEntity<User> login(@RequestBody User user) {
-            return ResponseEntity.ok(userService.login(user.getUserName(), user.getPassword()));
+        public ResponseEntity<User> login(@RequestBody User userRequest) {
+            User loggedInUser = userService.login(userRequest);
+            return ResponseEntity.ok(loggedInUser);
+        }
+        @PutMapping("/update-profile")
+        public ResponseEntity<User> updateProfile(@RequestBody User userRequest) {
+            User updatedUser = userService.updateProfile(userRequest);
+            return ResponseEntity.ok(updatedUser);
         }
 
 

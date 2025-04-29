@@ -41,6 +41,51 @@ AUCTION SITE
 
 
 	                                PSEUDOCODE
+USER
+** register-> a method called register that takes a user object as input
+Check if a user already exists in the repository using the provided email:
+
+    If a user in the repository.findbyemail() is not equal null:
+        Throw a "User Already Exists" exception
+    User esxitingUser = If no user exists with that email
+    If existingUser is equal null
+        set required credentials
+        return the userRepository where it is saved
+
+
+** login-> a method called login that takes a user object containing email and password
+Search for a user in the repository using the provided email:
+User foundUser = userRepository.findEmail(()):
+    If foundUser equals null
+    throw a "User Not Found" exception
+
+    If no user is found:
+        Throw a "User Not Found" exception
+Compare the provided email with the stored email:
+    If they do not match:
+        Throw an "Incorrect email" exception
+Compare the provided password with the stored password:
+    If they do not match:
+        Throw an "Incorrect Password" exception
+
+If everything matches:
+    Return the found user
+
+** updateProfile-> a method called updateProfile that takes a user object as input
+Start a try block:
+    Search for an existing user in the repository using the provided user's email
+    If no user is found:
+        Throw a "User Not Found" exception with a message
+    Update the existing user's name, gender, and role using values from the input user
+    Save the updated user to the repository
+    Return the updated user
+Catch the "User Not Found" exception:
+    Print or log a message that the update failed because the user was not found
+    Return null or handle the failure accordingly
+Catch any other unexpected exception:
+    Print or log the error message
+    Return null or handle the failure accordingly
+
 
 PRODUCT
 ** createAProduct-> pass in the following details needed in creating a product
@@ -50,6 +95,7 @@ PRODUCT
    -- setProductName,startingPrice,startTime,endTime,imageUrl,category
    -- save it in a repository
    return the product
+
 ** updateProduct-> pass in required details
    -- search the repository to check a product by Id
    -- if not found throw PRODUCT NOT FOUND
@@ -57,6 +103,7 @@ PRODUCT
    -- set required details
    -- save in a repository
    return product
+
 ** deleteProduct-> pass in required details
    -- search the repository by id
    -- if not found throw PRODUCT NOT FOUND
@@ -73,6 +120,8 @@ BID
 	-- update the item with current bid
 	-- setCurrentBid,item
 	return bid;
+
+
 
 What is JWT (JSON Web Token)?
 JWT (JSON Web Token) is a compact, URL-safe means of representing claims between two parties.

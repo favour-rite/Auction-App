@@ -1,24 +1,24 @@
-//package org.example.service;
-//
-//import org.example.data.models.Bid;
-//import org.example.data.models.Product;
-//
-//import org.example.data.models.User;
-//import org.example.data.repository.BidRepository;
+package org.example.service;
+
+import org.example.data.models.Bid;
+import org.example.data.models.Product;
+
+import org.example.data.models.User;
+import org.example.data.repository.BidRepository;
 //import org.example.data.repository.ProductRepository;
-//import org.example.data.repository.UserRepository;
-//import org.example.exception.*;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//import java.time.LocalTime;
-//import java.util.List;
-//
-//@Service
-//public class BidService {
-//
-//    @Autowired
-//    private BidRepository bidRepository;
+import org.example.data.repository.UserRepository;
+import org.example.exception.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalTime;
+import java.util.List;
+
+@Service
+public class BidService {
+
+    @Autowired
+    private BidRepository bidRepository;
 //    @Autowired
 //    private ProductRepository productRepository;
 //    @Autowired
@@ -51,9 +51,9 @@
 //            throw new BidTooLowException("Bid amount too low");
 //        }
 //        bid.setBidAmount(newBidAmount);
-////        bidRepository.update(bid);
+//         bidRepository.update(bid);
 //        bid.getProduct().setCurrentBidAmount(newBidAmount);
-////        productRepository.update(bid.getProduct());
+//         productRepository.update(bid.getProduct());
 //        return bid;
 //    }
 //    public List<Bid> getBidsForProduct(String productId) {
@@ -65,7 +65,7 @@
 //        }
 //        bidRepository.delete(bid);
 //        bid.getProduct().setCurrentBidAmount(bid.getBidAmount());
-////        productRepository.update(bid.getProduct());
+//        productRepository.update(bid.getProduct());
 //        return bid;
 //    }
 //
@@ -73,4 +73,4 @@
 //        return bidRepository.findById(bid.getId())
 //                .orElseThrow(() -> new BidNotFoundException("Bid not found"));
 //    }
-//}
+}
