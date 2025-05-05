@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bazaar Dashboard</title>
+  <link rel="stylesheet" href="ProductCreation.css" />
+</head>
+<body>
+<header>
+  <h1>Welcome to Your Bazaar Dashboard</h1>
+  <nav>
+    <a href="ProductCreation.html">Create Auction</a>
+    <a href="#">My Bids</a>
+    <a href="OptionPage.html">Options</a>
+    <a href="RegistrationApp.html">Register</a>
+    <a href="LoginPage.html">Login</a>
+    <a href="AuctionHistory.html">Auction History</a>
+    <a href="NotificationDashBoard.html">Notifications</a>
+    <a href="#">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <section class="products">
+    <h2>Live Auctions</h2>
+    <div class="product-card">
+      <form id="uploadForm" enctype="multipart/form-data">
+        <label for="productImage">Upload Product Image</label>
+        <input type="file" id="productImage" name="productImage" accept="image/*" />
+        <img id="preview" src="#" alt="Image Preview" class="preview" />
+
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" name="productName" required />
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3" required></textarea>
+
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category" required />
+
+        <label for="startTime">Auction Start Time</label>
+        <input type="datetime-local" id="startTime" name="startTime" required />
+
+        <label for="endTime">Auction End Time</label>
+        <input type="datetime-local" id="endTime" name="endTime" required />
+
+        <label for="price">Starting Price ($)</label>
+        <input type="number" id="price" name="price" min="0" required />
+
+        <div class="button-group">
+          <button type="submit">Submit</button>
+          <button type="button">Bid Now</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+
+</body>
+</html>

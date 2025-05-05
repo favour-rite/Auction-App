@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -18,13 +19,15 @@ import java.util.List;
 public class Product {
 
     @Id
-    private String iD;
+    private String Id;
     private String productName;
     private String description;
     private String category;
     private double startingPrice;
     private LocalTime auctionStartTime;
     private LocalTime auctionEndTime;
+    private LocalTime timeStamp;
+    private LocalDate dateStamp;
     private double currentBidAmount;
     private String imageUrl;
 
@@ -32,7 +35,6 @@ public class Product {
     private List<Bid> bids;
     private List<AuctionHistory> auctionHistory;
     private AuctionStatus auctionStatus;
-
 
 }
 

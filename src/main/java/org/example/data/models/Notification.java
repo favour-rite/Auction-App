@@ -3,6 +3,7 @@ package org.example.data.models;
 import lombok.Data;
 import org.example.data.enums.Role;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -18,5 +19,7 @@ public class Notification {
     private boolean read = false;
     private LocalDate createdAt;
     private LocalTime time;
+    @DBRef
+    private User user;
 
 }

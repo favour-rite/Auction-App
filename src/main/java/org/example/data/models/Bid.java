@@ -14,13 +14,11 @@ public class Bid {
 
 
     @Id
-    private String id;
+    private String Id;
     private String productId;
     private Double currentBidAmount;
-    private Double startingPrice;
     private Double bidAmount;
     private Product product;
-    private LocalTime timeStamp;
     private User user;
 
 

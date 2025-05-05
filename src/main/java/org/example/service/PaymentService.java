@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.data.enums.PaymentStatus;
 import org.example.data.models.Payment;
+import org.example.data.models.User;
 import org.example.data.repository.PaymentRepository;
 import org.example.data.repository.UserRepository;
 import org.example.exception.PaymentAlreadyConfirmedException;
@@ -21,9 +22,10 @@ public class PaymentService {
     @Autowired
     private UserRepository userRepository;
 
-    public Payment makePayment(String userId, String productId, Payment paymentDetails) throws PaymentAlreadyConfirmedException {
-        userRepository.findById(userId)
-               .orElseThrow(() -> new UserNotFoundException("User not found"));
+
+    public Payment makePayment(String userId, String productId, Payment paymentDetails) throws PaymentAlreadyConfirmedException, UserNotFoundException, ProductNotFoundException {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
         paymentRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
         if (paymentDetails.getStatus() == PaymentStatus.CONFIRMED) {
@@ -36,7 +38,11 @@ public class PaymentService {
         return paymentRepository.save(paymentDetails);
     }
 
-    public Payment confirmPayment(String userId, String productId,Payment payment) throws PaymentAlreadyConfirmedException {
+    public Payment confirmPayment(String userId, String productId, Payment payment) throws PaymentAlreadyConfirmedException, UserNotFoundException, ProductNotFoundException {
+        userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        paymentRepository.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
         if (payment.getStatus() == PaymentStatus.CONFIRMED) {
             throw new PaymentAlreadyConfirmedException("Payment is already confirmed");
         }
@@ -46,7 +52,11 @@ public class PaymentService {
     }
 
 
-    public Payment cancelPayment(Payment payment) throws PaymentAlreadyConfirmedException {
+    public Payment cancelPayment(String userId, String productId, Payment payment) throws PaymentAlreadyConfirmedException {
+        userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        paymentRepository.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
         if (payment.getStatus() == PaymentStatus.CONFIRMED) {
             throw new PaymentAlreadyConfirmedException("Cannot cancel a confirmed payment");
         }
@@ -56,7 +66,10 @@ public class PaymentService {
     }
 
     public PaymentStatus viewPaymentStatus(Payment payment) {
+
         return payment.getStatus();
     }
 
 }
+
+
