@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.example.data.enums.AuctionStatus;
 import org.example.data.enums.Gender;
-import org.example.data.enums.Role;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,7 +28,6 @@ public class User {
     private String password;
     private Gender gender;
     private AuctionStatus status;
-    private Role role;
 
 
 }

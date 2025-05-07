@@ -2,7 +2,6 @@ package org.example.service;
 
 import org.example.BazaarBazaar;
 import org.example.data.enums.Gender;
-import org.example.data.enums.Role;
 import org.example.data.models.Bid;
 import org.example.data.models.Product;
 import org.example.data.models.User;
@@ -68,7 +67,7 @@ class BidServiceTest {
         user.setPassword("password");
         user.setEmail("email");
         user.setGender(Gender.FEMALE);
-        user.setRole(Role.BUYER);
+//        user.setRole(Role.BUYER);
         userRepository.save(user);
 
         Product product = new Product();

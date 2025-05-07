@@ -22,7 +22,7 @@ public class UserService {
             user.setUserName(user.getUserName());
             user.setEmail(user.getEmail());
             user.setPassword(user.getPassword());
-            user.setRole(user.getRole());
+//            user.setRole(user.getRole());
             user.setGender(user.getGender());
             return userRepository.save(user);
         }
@@ -40,7 +40,7 @@ public class UserService {
         }
         if (!foundUser.getPassword().equals(user.getPassword())) {
             throw new IncorrectPasswordException("Incorrect password");
-        }
+        }userRepository.save(foundUser);
         return foundUser;
     }
     public User updateProfile(User user) {
@@ -51,7 +51,7 @@ public class UserService {
         }
             existingUser.setUserName(user.getUserName());
             existingUser.setGender(user.getGender());
-            existingUser.setRole(user.getRole());
+//            existingUser.setRole(user.getRole());
             return userRepository.save(existingUser);
         }
 

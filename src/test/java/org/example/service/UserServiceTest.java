@@ -7,9 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.example.data.enums.Gender.FEMALE;
 import static org.example.data.enums.Gender.MALE;
-import static org.example.data.enums.Role.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -26,78 +24,46 @@ class UserServiceTest {
     }
 
     @Test
-    public void testThatUserAdminCanRegister() {
+    public void testThatUserCanRegister() {
         User user = new User();
         user.setUserName("Rachel Dennis");
         user.setPassword("babygirl123");
         user.setEmail("MoneyWise0@gmail.com");
-        user.setRole(ADMIN);
         user.setGender(MALE);
 
-        User user1 = userService.register(user);
-        assertEquals("Rachel Dennis", user1.getUserName());
-        assertEquals("MoneyWise0@gmail.com", user1.getEmail());
-        assertEquals(MALE, user1.getGender());
-        assertEquals(ADMIN, user1.getRole());
+        User registeredUser = userService.register(user);
+        assertEquals("Rachel Dennis", registeredUser.getUserName());
+        assertEquals("MoneyWise0@gmail.com", registeredUser.getEmail());
+        assertEquals(MALE, registeredUser.getGender());
         assertEquals(1, userRepository.count());
 
     }
     @Test
-    public void testThatUserAdminCanLogin() {
+    void testThatUserCanLogin() {
         User user = new User();
-        user.setPassword("babygirl123");
         user.setEmail("MoneyWise0@gmail.com");
-        User userLoggedIn = userService.login(user);
+        user.setPassword("babygirl123");
+        userRepository.save(user);
 
-        assertNotNull(userLoggedIn);
-        assertEquals("MoneyWise0@gmail.com", userLoggedIn.getEmail());
-        assertEquals(1, userRepository.count());
-
-    }
-    @Test
-    public void testThatUserSellerCanRegister() {
-        User user = new User();
-        user.setUserName("Precious Regina");
-        user.setPassword("happymood123");
-        user.setEmail("regina10@gmail.com");
-        user.setRole(SELLER);
-        user.setGender(FEMALE);
-
-        User user1 = userService.register(user);
-        assertEquals("Precious Regina", user1.getUserName());
-        assertEquals("regina10@gmail.com", user1.getEmail());
-        assertEquals(FEMALE, user1.getGender());
-        assertEquals(SELLER, user1.getRole());
-        assertEquals(2, userRepository.count());
+        User loggedInUser = userService.login(user);
+        assertNotNull(user);
+        assertEquals("MoneyWise0@gmail.com", loggedInUser.getEmail());
 
     }
     @Test
-    public void testThatUserSellerCanLogin() {
+    void testThatProfileCanBeUpdated() {
         User user = new User();
-        user.setPassword("happymood123");
-        user.setEmail("regina10@gmail.com");
+        user.setUserName("Rachel Dennis");
+        user.setEmail("MoneyWise0@gmail.com");
+        user.setPassword("babygirl123");
+        userRepository.save(user);
+        User updatingProfile = userService.updateProfile(user);
 
-        User userLoggedIn = userService.login(user);
+        User updatedUser = userRepository.findByEmail("regina10@gmail.com");
 
-        assertNotNull(userLoggedIn);
-        assertEquals("regina10@gmail.com", userLoggedIn.getEmail());
-        assertEquals(2, userRepository.count());
+        assertNotNull(updatedUser);
 
     }
-    @Test
-    public void testThatProfileCanBeUpdated() {
-        User user = new User();
-        user.setUserName("Precious Regina");
-        user.setPassword("happymood123");
-        user.setEmail("regina10@gmail.com");
-        user.setRole(BUYER);
-        user.setGender(FEMALE);
-        User user1 = userService.updateProfile(user);
-        assertEquals("Precious Regina", user1.getUserName());
-        assertEquals("regina10@gmail.com", user1.getEmail());
-        assertEquals(FEMALE, user1.getGender());
-        assertEquals(BUYER, user1.getRole());
-        assertEquals(1, userRepository.count());
 
-    }
+
 }

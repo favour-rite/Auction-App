@@ -87,7 +87,6 @@
             <version>3.0.0</version> <!-- Updated to Jakarta Validation -->
         </dependency>
 
-
     </dependencies>
 
     <build>

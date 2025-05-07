@@ -1,7 +1,6 @@
 package org.example.data.models;
 
 import lombok.Data;
-import org.example.data.enums.Role;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,7 +13,6 @@ import java.time.LocalTime;
 public class Notification {
     @Id
     private String NotificationId;
-    private Role role;
     private String message;
     private boolean read = false;
     private LocalDate createdAt;

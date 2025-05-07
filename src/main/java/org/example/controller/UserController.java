@@ -22,7 +22,7 @@ public class UserController {
             user.setEmail(userRegistrationRequest.getEmail());
             user.setPassword(userRegistrationRequest.getPassword());
             user.setGender(userRegistrationRequest.getGender());
-            user.setRole(userRegistrationRequest.getRole());
+//            user.setRole(userRegistrationRequest.getRole());
             return userService.register(user);
         }
         @PostMapping("/login")
