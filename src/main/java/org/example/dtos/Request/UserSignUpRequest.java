@@ -1,12 +1,11 @@
 package org.example.dtos.Request;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.example.data.enums.Gender;
 
 
 @Data
-public class UserRegistrationRequest {
+public class UserSignUpRequest {
 
     private String UserName;
     private String email;

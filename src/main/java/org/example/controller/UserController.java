@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import org.example.data.models.User;
-import org.example.dtos.Request.UserRegistrationRequest;
+import org.example.dtos.Request.UserSignUpRequest;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,21 +9,22 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin("*")
 public class UserController {
 
 
         @Autowired
         private UserService userService;
 
-        @PostMapping("/registration")
-        public User registration(@RequestBody UserRegistrationRequest userRegistrationRequest) {
+        @PostMapping("/signUp")
+        public User signUp(@RequestBody UserSignUpRequest userSignUpRequest) {
             User user = new User();
-            user.setUserName(userRegistrationRequest.getUserName());
-            user.setEmail(userRegistrationRequest.getEmail());
-            user.setPassword(userRegistrationRequest.getPassword());
-            user.setGender(userRegistrationRequest.getGender());
+            user.setUserName(userSignUpRequest.getUserName());
+            user.setEmail(userSignUpRequest.getEmail());
+            user.setPassword(userSignUpRequest.getPassword());
+//            user.setGender(userSignUpRequest.getGender());
 //            user.setRole(userRegistrationRequest.getRole());
-            return userService.register(user);
+            return userService.signUp(user);
         }
         @PostMapping("/login")
         public ResponseEntity<User> login(@RequestBody User userRequest) {

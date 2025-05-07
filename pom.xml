@@ -42,11 +42,12 @@
             <artifactId>spring-boot-starter-security</artifactId>
             <version>3.4.3</version> <!-- Latest stable release -->
         </dependency>
-
-        <!-- BCrypt dependency for password hashing -->
+        <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>4.20.0</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>

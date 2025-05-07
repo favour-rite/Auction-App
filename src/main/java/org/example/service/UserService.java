@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User register(User user) throws UserFoundException,UserAlreadyExist{
+    public User signUp(User user) throws UserFoundException,UserAlreadyExist{
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new UserAlreadyExist("User already exists!");
         }
@@ -23,12 +23,11 @@ public class UserService {
             user.setEmail(user.getEmail());
             user.setPassword(user.getPassword());
 //            user.setRole(user.getRole());
-            user.setGender(user.getGender());
+//            user.setGender(user.getGender());
             return userRepository.save(user);
         }
         throw new UserFoundException("User details already exists");
     }
-
 
     public User login(User user) throws UserNotFoundException, IncorrectPasswordException {
         User foundUser = userRepository.findByEmail(user.getEmail());
