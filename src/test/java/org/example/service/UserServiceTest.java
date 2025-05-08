@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.example.data.enums.Gender.MALE;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@SpringBootTest(classes = UserServiceTest.class)
 class UserServiceTest {
 
     @Autowired

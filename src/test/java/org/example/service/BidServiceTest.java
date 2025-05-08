@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.BazaarBazaar;
+import org.example.AuctionApp;
 import org.example.data.enums.Gender;
 import org.example.data.models.Bid;
 import org.example.data.models.Product;
@@ -17,11 +17,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalTime;
 import java.util.List;
 
-@SpringBootTest(classes = BazaarBazaar.class)
+@SpringBootTest(classes = AuctionApp.class)
 class BidServiceTest {
 
     @Autowired
-    private BidService bidService;
+    private BidServiceImpl bidServiceImpl;
     @Autowired
     private BidRepository bidRepository;
     @Autowired
@@ -51,7 +51,7 @@ class BidServiceTest {
         Bid bid = new Bid();
         bid.setBidAmount(bidAmount);
 
-        Bid bid1 = bidService.placeABidForAnAuctionBid(product,bid);
+        Bid bid1 = bidServiceImpl.placeABidForAnAuctionBid(product,bid);
 
         assertEquals(LocalTime.of(3, 0, 0), product.getTimeStamp());
         assertEquals(bidAmount, bid1.getBidAmount(), 0.01);
@@ -86,7 +86,7 @@ class BidServiceTest {
         bidRepository.save(bid);
 
 
-        Bid cancelledBid = bidService.cancelBid(bid,user,product);
+        Bid cancelledBid = bidServiceImpl.cancelBid(bid,user,product);
         assertEquals(50.00,product.getStartingPrice());
 
     }
@@ -111,7 +111,7 @@ class BidServiceTest {
         bidRepository.save(bid);
         Bid savedBid = bidRepository.findById(bid.getId()).orElseThrow();
 
-        Bid result = bidService.viewBid(bid);
+        Bid result = bidServiceImpl.viewBid(bid);
         assertEquals(bid, result);
     }
     @Test
@@ -134,7 +134,7 @@ class BidServiceTest {
         bid = bidRepository.save(bid);
 
         double newAmount = 150.00;
-        Bid updatedBid = bidService.updateBid(bid, newAmount);
+        Bid updatedBid = bidServiceImpl.updateBid(bid, newAmount);
 
 
         assertEquals(newAmount, updatedBid.getBidAmount(), 0.01);
@@ -156,10 +156,9 @@ class BidServiceTest {
         Bid bid = new Bid();
         bid.setProductId(product.getId());
         bid.setBidAmount(120.0);
-
         bidRepository.save(bid);
 
-        List<Bid> bids = bidService.getBidsForProduct(product.getId());
+        List<Bid> bids = bidServiceImpl.getBidsForProduct(product.getId());
 
         assertFalse(bids.isEmpty());
         assertEquals(1, bids.size());

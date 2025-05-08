@@ -3,16 +3,15 @@ package org.example.service;
 import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
 import org.example.exception.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
 
-    @Autowired
     private UserRepository userRepository;
 
+    @Override
     public User signUp(User user) throws UserFoundException,UserAlreadyExist{
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new UserAlreadyExist("User already exists!");
@@ -22,13 +21,13 @@ public class UserService {
             user.setUserName(user.getUserName());
             user.setEmail(user.getEmail());
             user.setPassword(user.getPassword());
-//            user.setRole(user.getRole());
-//            user.setGender(user.getGender());
+            user.setGender(user.getGender());
             return userRepository.save(user);
         }
         throw new UserFoundException("User details already exists");
     }
 
+    @Override
     public User login(User user) throws UserNotFoundException, IncorrectPasswordException {
         User foundUser = userRepository.findByEmail(user.getEmail());
         if (foundUser == null) {
@@ -42,6 +41,7 @@ public class UserService {
         }userRepository.save(foundUser);
         return foundUser;
     }
+    @Override
     public User updateProfile(User user) {
         User existingUser = userRepository.findByEmail(user.getEmail());
 

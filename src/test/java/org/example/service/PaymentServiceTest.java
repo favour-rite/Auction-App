@@ -25,7 +25,7 @@ class PaymentServiceTest {
     @Autowired
     private PaymentRepository paymentRepository;
     @Autowired
-    private PaymentService paymentService;
+    private PaymentServiceImpl paymentService;
     @Autowired
     private BidService bidService;
     @Autowired

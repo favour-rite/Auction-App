@@ -8,21 +8,19 @@ import org.example.data.repository.BidRepository;
 import org.example.data.repository.ProductRepository;
 import org.example.data.repository.UserRepository;
 import org.example.exception.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BidServiceImpl extends  {
+public class BidServiceImpl implements BidService{
 
-    @Autowired
+
     private BidRepository bidRepository;
-    @Autowired
     private UserRepository userRepository;
-    @Autowired
     private ProductRepository productRepository;
 
+    @Override
     public Bid placeABidForAnAuctionBid(Product product, Bid bid) throws ProductNotFoundException, UserNotFoundException {
         if (product == null) {
             throw new ProductNotFoundException("Product not found");
@@ -36,6 +34,7 @@ public class BidServiceImpl extends  {
         return bid;
     }
 
+    @Override
     public Bid updateBid(Bid bid, double newBidAmount) throws BidTooLowException {
         if (newBidAmount <= bid.getProduct().getCurrentBidAmount()) {
             throw new BidTooLowException("Bid amount too low");
@@ -49,7 +48,8 @@ public class BidServiceImpl extends  {
         return bid;
     }
 
-    public Bid cancelBid(Bid bid, User user,Product product) throws CannotCancelSomeoneElseBid {
+    @Override
+    public Bid cancelBid(Bid bid, User user, Product product) throws CannotCancelSomeoneElseBid {
       userRepository.findById(user.getID())
               .orElseThrow(() -> new UserNotFoundException("User not found"));
       if (!bid.getUser().equals(user)) {
@@ -64,11 +64,13 @@ public class BidServiceImpl extends  {
       return bid;
     }
 
+    @Override
     public Bid viewBid(Bid bid) {
         return bidRepository.findById(bid.getId())
                 .orElseThrow(() -> new BidNotFoundException("Bid not found"));
     }
 
+    @Override
     public List<Bid> getBidsForProduct(String productId) {
         List<Bid> bids = bidRepository.findByProductId(productId);
         if (bids.isEmpty()) {
