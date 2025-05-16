@@ -3,117 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Baazarbazar App Dashboard</title>
-  <link href="" rel="MainDashBoard.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
-  <h1>Baazarbazar Dashboard</h1>
+  <h1> Baazarbazar Dashboard Logo </h1>
+  <div class="searchInput">
+    <form>
+      <label>
+        <input type="text" placeholder="Search for anything...">
+        <button > <i class="glyphicon glyphicon-search"></i></button>
+      </label>
+    </form>
+  </div>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">My Account</a>
-    <a href="#">Logout</a>
+    <button> <i class="glyphicon glyphicon-home"></i> </button>
+    <button> <i class="glyphicon glyphicon-user"></i> </button>
+    <button> <i class="glyphicon glyphicon-bell"></i> </button>
+    <button> <i class="glyphicon glyphicon-shopping-cart"></i> </button>
+    <a href="signOut.html">Sign Out</a>
+    <a href="signIn.html">Sign In</a>
   </nav>
 </header>
 
-<div class="container">
-  <h2>🛒 Current Auctions</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Product</th>
-      <th>Current Bid</th>
-      <th>Time Left</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Gucci Top</td>
-      <td>$1000</td>
-      <td>15 mins</td>
-      <td class="status-active">Active</td>
-      <td><button class="action-button">View</button></td>
-    </tr>
-    <tr>
-      <td>Vintage Watch</td>
-      <td>$500</td>
-      <td>5 mins</td>
-      <td class="status-active">Active</td>
-      <td><button class="action-button">Bid</button></td>
-    </tr>
-    <tr>
-      <td>Art Piece</td>
-      <td>$3000</td>
-      <td>0</td>
-      <td class="status-ended">Ended</td>
-      <td><button class="action-button">View Details</button></td>
-    </tr>
-    </tbody>
-  </table>
+<aside>
+  <div class="sidebar">
+    <nav>
+      <ul>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">This Week</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">My Cart</a></li>
+        <li><a href="#">Sell</a></li>
+        <li><a href="#">favourites</a></li>
+        <li><a href="#">auction guidlines</a></li>
+      </ul>
+    </nav>
+</aside>
+    <button> <i class="glyphicon glyphicon-details"></i></button>
 
-  <h2>📋 My Bids</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Product</th>
-      <th>My Bid</th>
-      <th>Highest Bid</th>
-      <th>Time Left</th>
-      <th>Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Gucci Top</td>
-      <td>$900</td>
-      <td>$1000</td>
-      <td>15 mins</td>
-      <td style="color: red;">Outbid</td>
-    </tr>
-    <tr>
-      <td>Watch</td>
-      <td>$500</td>
-      <td>$500</td>
-      <td>5 mins</td>
-      <td style="color: green;">Leading</td>
-    </tr>
-    </tbody>
-  </table>
-
-  <h2>📦 My Listings</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Product</th>
-      <th>Starting Price</th>
-      <th>Current Bid</th>
-      <th>Time Left</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Designer Bag</td>
-      <td>$150</td>
-      <td>$300</td>
-      <td>2 hrs</td>
-      <td class="status-active">Active</td>
-      <td><button class="action-button">Edit</button></td>
-    </tr>
-    <tr>
-      <td>Sneakers</td>
-      <td>$80</td>
-      <td>$110</td>
-      <td>0</td>
-      <td class="status-ended">Sold</td>
-      <td><button class="action-button">View Winner</button></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
 
 </body>
 </html>

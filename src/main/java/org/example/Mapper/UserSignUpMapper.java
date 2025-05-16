@@ -18,6 +18,8 @@ public class UserSignUpMapper {
     public static UserSignUpResponse mapToUserResponse(String message) {
         UserSignUpResponse response = new UserSignUpResponse();
         response.setMessage(message);
+        response.setUserName(response.getUserName());
+//        response.getOTP(response.getOTP());
         return response;
     }
 }

@@ -1,0 +1,19 @@
+body {
+    font-family: "Sofia", sans-serif;
+    margin: 0;
+    background-color: skyblue;
+}
+.Text{
+    display: flex;
+    justify-content: left;
+    padding-top: 200px;
+    margin: 200px;
+
+}
+.Button{
+    margin: 0;
+}
+.image{
+    height: 60px;
+    padding-left: 600px;
+}

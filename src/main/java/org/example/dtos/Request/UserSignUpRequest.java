@@ -12,7 +12,4 @@ public class UserSignUpRequest {
     private String password;
     private Gender gender;
 
-
-
-
 }

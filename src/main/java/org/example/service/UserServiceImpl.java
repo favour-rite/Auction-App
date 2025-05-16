@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.Mapper.UserSignUpMapper;
 import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
 import org.example.dtos.Request.UserLoginRequest;
@@ -20,8 +21,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserLoginMapper userLoginMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userLoginMapper = userLoginMapper;
+    public UserServiceImpl(UserLoginMapper userLoginMapper,UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.UserLoginMapper = userLoginMapper;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
