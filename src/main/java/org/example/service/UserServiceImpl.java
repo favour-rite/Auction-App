@@ -2,49 +2,54 @@ package org.example.service;
 
 import org.example.data.models.User;
 import org.example.data.repository.UserRepository;
+import org.example.dtos.Request.UserLoginRequest;
+import org.example.Mapper.UserLoginMapper;
+import org.example.dtos.Request.UserSignUpRequest;
+import org.example.dtos.Response.UserLoginResponse;
+import org.example.dtos.Response.UserSignUpResponse;
 import org.example.exception.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-
+    private final UserLoginMapper UserLoginMapper;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserLoginMapper userLoginMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userLoginMapper = userLoginMapper;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public User signUp(User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null) {
-            throw new UserAlreadyExist("User already exists!");
+    public UserSignUpResponse signUp(UserSignUpRequest userSignUpRequest) throws UserAlreadyExistException {
+        if (userRepository.existsByEmail(userSignUpRequest.getEmail())) {
+            throw new UserAlreadyExistException("User already exists!");
         }
-        User existingUser= userRepository.findByEmail(user.getEmail());
-        if (existingUser == null) {
-            user.setUserName(user.getUserName());
-            user.setEmail(user.getEmail());
-            user.setPassword(user.getPassword());
-            user.setGender(user.getGender());
-            return userRepository.save(user);
-        }
-        throw new UserFoundException("User details already exists");
+        User user = UserSignUpMapper.mapToUser(userSignUpRequest);
+        user.setPassword(passwordEncoder.encode(userSignUpRequest.getPassword()));
+        userRepository.save(user);
+        return UserSignUpMapper.mapToUserResponse("Account created successfully");
     }
 
     @Override
-    public User login(User user){
-        User foundUser = userRepository.findByEmail(user.getEmail());
-        if (foundUser == null) {
-            throw new UserNotFoundException("User not found with email: " + user.getEmail());
+    public UserLoginResponse login(UserLoginRequest userRequest) {
+        Optional<User> existingUser = Optional.ofNullable(userRepository.findByEmail(userRequest.getEmail()));
+        if (existingUser.isEmpty()) {
+            throw new UserNotFoundException("User not found with email: " + userRequest.getEmail());
         }
-        if (!foundUser.getEmail().equals(user.getEmail())) {
-            throw new IncorrectEmailException("Incorrect email");
+        User user = existingUser.get();
+        if (!passwordEncoder.matches(userRequest.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid password");
         }
-        if (!foundUser.getPassword().equals(user.getPassword())) {
-            throw new IncorrectPasswordException("Incorrect password");
-        }userRepository.save(foundUser);
-        return foundUser;
+        return UserLoginMapper.mapToUserResponse("User logged in successfully");
     }
+
     @Override
     public User updateProfile(User user) {
         User existingUser = userRepository.findByEmail(user.getEmail());

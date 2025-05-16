@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends MongoRepository<User, String> {
     void deleteAll();
     User findByEmail(@Email(message = "Email should be valid") String email);
+
+    boolean existsByEmail(String email);
 }
 
