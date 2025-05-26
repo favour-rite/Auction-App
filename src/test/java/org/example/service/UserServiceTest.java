@@ -1,13 +1,19 @@
 package org.example.service;
 
-import org.example.data.models.User;
+import org.example.data.enums.Gender;
 import org.example.data.repository.UserRepository;
+import org.example.dtos.Request.UserLoginRequest;
+import org.example.dtos.Request.UserRequest;
+import org.example.dtos.Request.UserSignUpRequest;
+import org.example.dtos.Response.UserLoginResponse;
+import org.example.dtos.Response.UserResponse;
+import org.example.dtos.Response.UserSignUpResponse;
+import org.example.exception.UserAlreadyExistException;
 import org.junit.jupiter.api.AfterEach;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.example.data.enums.Gender.MALE;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = UserServiceTest.class)
@@ -24,45 +30,62 @@ class UserServiceTest {
     }
 
     @Test
-    public void testThatUserCanRegister() {
-        User user = new User();
-        user.setUserName("Rachel Dennis");
-        user.setPassword("babygirl123");
-        user.setEmail("MoneyWise0@gmail.com");
-        user.setGender(MALE);
+    public void testThatUserCanRegister() throws UserAlreadyExistException {
+        UserSignUpRequest userSignUpRequest = new UserSignUpRequest();
+        userSignUpRequest.setUserName("Rachel Dennis");
+        userSignUpRequest.setPassword("password123");
+        userSignUpRequest.setEmail("MoneyWise0@gmail.com");
+        userSignUpRequest.setGender(Gender.MALE);
 
-        User registeredUser = userService.signUp(user);
-        assertEquals("Rachel Dennis", registeredUser.getUserName());
-        assertEquals("MoneyWise0@gmail.com", registeredUser.getEmail());
-        assertEquals(MALE, registeredUser.getGender());
+        UserSignUpResponse response = userService.signUp(userSignUpRequest);
+        assertNotNull(userSignUpRequest);
+        assertEquals("Account created successfully You can now place bid,buy , sell product", response.getMessage());
+        assertEquals("Rachel Dennis", response.getUserName());
         assertEquals(1, userRepository.count());
-
     }
     @Test
-    void testThatUserCanLogin() {
-        User user = new User();
-        user.setEmail("MoneyWise0@gmail.com");
-        user.setPassword("babygirl123");
-        userRepository.save(user);
+    public void testThatUserAlreadyExistsExceptionIsThrown() throws UserAlreadyExistException {
+        UserSignUpRequest userSignUpRequest = new UserSignUpRequest();
+        userSignUpRequest.setUserName("Rachel Dennis");
+        userSignUpRequest.setPassword("password123");
+        userSignUpRequest.setEmail("MoneyWise0@gmail.com");
+        userSignUpRequest.setGender(Gender.MALE);
 
-        User loggedInUser = userService.login(user);
-        assertNotNull(user);
-        assertEquals("MoneyWise0@gmail.com", loggedInUser.getEmail());
+        userService.signUp(userSignUpRequest);
 
+        assertThrows(UserAlreadyExistException.class, () -> {
+            userService.signUp(userSignUpRequest);
+        });
     }
+
+    @Test
+    void testThatUserCanLogin() {
+        UserLoginRequest userLoginRequest = new UserLoginRequest();
+        userLoginRequest.setPassword("password123");
+        userLoginRequest.setEmail("MoneyWise0@gmail.com");
+
+        UserLoginResponse response = userService.login(userLoginRequest);
+
+
+        assertNotNull(response);
+        assertEquals("User logged in successfully", response.getMessage());
+        assertEquals("MoneyWise0@gmail.com", userLoginRequest.getEmail());
+    }
+
 //    @Test
 //    void testThatProfileCanBeUpdated() {
-//        User user = new User();
-//        user.setUserName("Rachel Dennis");
-//        user.setEmail("MoneyWise0@gmail.com");
-//        user.setPassword("babygirl123");
-//        userRepository.save(user);
-//        User updatingProfile = userService.updateProfile(user);
+//        UserRequest userRequest = new UserRequest();
+//        userRequest.setUserName("Rachel Dennis");
+//        userRequest.setEmail("MoneyWise0@gmail.com");
+//        userRequest.setPassword("babygirl123");
 //
-//        User updatedUser = userRepository.findByEmail("regina10@gmail.com");
-//        assertNotNull(updatedUser);
-//        assertEquals("rachel dennis",updatedUser.getUserName());
-//        assertEquals("MoneyWise0@gmail.com",updatedUser.getEmail());
+//        userRepository.findByEmail("regina10@gmail.com");
+//        UserResponse updatingProfileResponse = userService.updateProfile(userRequest);
+//
+////        assertNotNull(updatingProfileResponse);
+//        assertEquals("rachel dennis",updatingProfileResponse.getUserName());
+//        assertEquals("MoneyWise0@gmail.com",updatingProfileResponse.getEmail());
+//        assertEquals("Your credentials has been updated",updatingProfileResponse.getMessage());
 //
 //    }
 

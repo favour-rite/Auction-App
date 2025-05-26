@@ -15,8 +15,6 @@ import java.time.LocalDate;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
-
-
     private PaymentRepository paymentRepository;
     private UserRepository userRepository;
 

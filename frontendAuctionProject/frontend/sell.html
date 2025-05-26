@@ -1,0 +1,37 @@
+<h2>Sell Your Item</h2>
+<form>
+    <label for="image">Upload Image:</label><br />
+    <input type="file" id="image" name="image" accept="image/*" required /><br /><br />
+
+    <label for="itemName">Item Name:</label><br />
+    <input type="text" id="itemName" name="itemName" required /><br /><br />
+
+    <label for="startingPrice">Starting Price ($):</label><br />
+    <input type="number" id="startingPrice" name="startingPrice" required /><br /><br />
+
+    <label for="auctionStart">Auction Start Time:</label><br />
+    <input type="datetime-local" id="auctionStart" name="auctionStart" required /><br /><br />
+
+    <label for="auctionEnd">Auction End Time:</label><br />
+    <input type="datetime-local" id="auctionEnd" name="auctionEnd" required /><br /><br />
+
+    <label for="currentBid">Current Bid Amount (Optional):</label><br />
+    <input type="" id="currentBid" name="currentBid" /><br /><br />
+
+    <label for="description">Description:</label><br />
+    <textarea id="description" name="description" rows="5" required></textarea><br /><br />
+
+    <label for="category">Category:</label><br />
+    <select id="category" name="category" required>
+        <option value="">Select a category</option>
+        <option value="art">Art</option>
+        <option value="antiques">Antiques</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home">Home Goods</option>
+    </select><br /><br />
+
+    <button type="submit">sell Item</button>
+
+</form>
+

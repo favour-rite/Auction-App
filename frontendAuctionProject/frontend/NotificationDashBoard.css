@@ -1,7 +1,55 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Sofia', sans-serif;
+  background-color: #f9f9fb;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 24px;
+  color: #2d2d2d;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #e0e7ff;
+  color: #1e40af;
+}
+
 .notification-dashboard {
-  padding: 30px;
-  max-width: 1000px;
-  margin: auto;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
 .notifications {
@@ -9,40 +57,30 @@
 }
 
 .notifications h2 {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 20px;
-  color: #343a40;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 5px;
+  color: #1f2937;
 }
 
 .notification-card {
-  background-color: #fff;
-  padding: 15px 20px;
-  border-left: 5px solid #007BFF;
-  border-radius: 6px;
+  background-color: #ffffff;
+  border-left: 4px solid #3b82f6;
+  padding: 16px 20px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-2px);
 }
 
 .notification-card p {
-  margin: 0;
-  font-size: 16px;
+  margin-bottom: 8px;
 }
 
 .notification-card span {
-  display: block;
-  margin-top: 8px;
-  font-size: 13px;
-  color: #666;
-}
-
-.seller-notifications .notification-card {
-  border-left-color: #28a745;
-}
-.buyer-notifications .notification-card {
-  border-left-color: #17a2b8;
-}
-.admin-notifications .notification-card {
-  border-left-color: #ffc107;
+  font-size: 14px;
+  color: #6b7280;
 }

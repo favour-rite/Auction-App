@@ -31,7 +31,6 @@ public class Product {
     private double currentBidAmount;
     private String imageUrl;
 
-
     private List<Bid> bids;
     private List<AuctionHistory> auctionHistory;
     private AuctionStatus auctionStatus;

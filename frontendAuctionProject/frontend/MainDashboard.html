@@ -1,49 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Baazarbazar App Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bidder's Hub Dashboard</title>
+  <link rel=" stylesheet" href="dashboardStyle.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+  <head>
 <body>
-<header>
-  <h1> Baazarbazar Dashboard Logo </h1>
-  <div class="searchInput">
+<header class="main-header">
+  <div class="logo">
+    <img src="images/bidderinagelogo.jpg" alt="BiddersHub Logo" />
+
+  </div>
+  <div class="search-box">
     <form>
       <label>
-        <input type="text" placeholder="Search for anything...">
-        <button > <i class="glyphicon glyphicon-search"></i></button>
+        <input type="text" placeholder="Search items..." />
+        <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
       </label>
     </form>
   </div>
-  <nav>
-    <button> <i class="glyphicon glyphicon-home"></i> </button>
-    <button> <i class="glyphicon glyphicon-user"></i> </button>
-    <button> <i class="glyphicon glyphicon-bell"></i> </button>
-    <button> <i class="glyphicon glyphicon-shopping-cart"></i> </button>
-    <a href="signOut.html">Sign Out</a>
-    <a href="signIn.html">Sign In</a>
+  <nav class="nav-links">
+    <a href="MainDashBoard.html"><i class="glyphicon glyphicon-home"></i></a>
+    <a href="userProfile.html"><i class="glyphicon glyphicon-user"></i></a>
+    <a href="NotificationDashBoard.html"><i class="glyphicon glyphicon-bell"></i></a>
+    <a href="shoppingCart.html"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+
   </nav>
+
 </header>
 
-<aside>
-  <div class="sidebar">
+<aside class="sidebar">
     <nav>
       <ul>
-        <li><a href="#">Trending</a></li>
-        <li><a href="#">This Week</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">My Cart</a></li>
-        <li><a href="#">Sell</a></li>
-        <li><a href="#">favourites</a></li>
-        <li><a href="#">auction guidlines</a></li>
+        <li><a href="marketPlace.html"><i class="glyphicon glyphicon-book"></i>MarketPlace</a></li>
+        <li><a href="trending.html"><i class="glyphicon glyphicon-piggy-bank"></i> Trending</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-arrow-down"></i> This Week</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> Categories</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> My Cart</a></li>
+        <li><a href=""><i class="glyphicon glyphicon-scissors"></i> Sell</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-heart"></i> Favourites</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> Auction Guidelines</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-sort-by-alphabet "></i>Auction History</a></li>
       </ul>
     </nav>
 </aside>
-    <button> <i class="glyphicon glyphicon-details"></i></button>
 
+<main class="content">
+  <section class="product-grid">
+    <article class="product-card">
+      <img src="https://th.bing.com/th/id/R.35402d158ec8ca458fdfe26d1fcaea07?rik=jY17qBjhe%2bD4Pw&pid=ImgRaw&r=0" alt="Antique Vase" />
+      <h2>Antique Vase</h2>
+      <p>Current Bid: $120</p>
+      <button class="bid-button">Place Bid</button>
+      <button class="more-details">More Details</button>
+    </article>
 
+    <article class="product-card">
+      <img src="https://th.bing.com/th/id/OIP.ylFdvrVjEHCMwk3uU6b7hwHaE7?cb=iwp2&rs=1&pid=ImgDetMain" alt="Vintage Camera" />
+      <h2>Vintage Camera</h2>
+      <p>Current Bid: $75</p>
+      <button class="bid-button">Place Bid</button>
+      <button class="more-details">More Details</button>
+    </article>
+
+    <article class="product-card">
+      <img src="https://th.bing.com/th/id/OIP.ylFdvrVjEHCMwk3uU6b7hwHaE7?cb=iwp2&rs=1&pid=ImgDetMain" alt="Vintage Camera" />
+      <h2>French Utensils</h2>
+      <p>Current Bid: $75</p>
+      <button class="bid-button">Place Bid</button>
+      <button class="more-details">More Details</button>
+    </article>
+
+    <article class="product-card">
+      <img src="https://th.bing.com/th/id/OIP.ylFdvrVjEHCMwk3uU6b7hwHaE7?cb=iwp2&rs=1&pid=ImgDetMain" alt="Vintage Camera" />
+      <h2>Vintage Camera</h2>
+      <p>Current Bid: $75</p>
+      <button class="bid-button">Place Bid</button>
+      <button class="more-details">More Details</button>
+    </article>
+
+    <article class="product-card">
+      <img src="https://th.bing.com/th/id/OIP.ylFdvrVjEHCMwk3uU6b7hwHaE7?cb=iwp2&rs=1&pid=ImgDetMain" alt="Vintage Camera" />
+      <h2>Vintage Camera</h2>
+      <p>Current Bid: $75</p>
+      <button class="bid-button">Place Bid</button>
+      <button class="more-details">More Details</button>
+    </article>
+
+    <article class="product-card">
+      <img src="https://th.bing.com/th/id/OIP.ylFdvrVjEHCMwk3uU6b7hwHaE7?cb=iwp2&rs=1&pid=ImgDetMain" alt="Vintage Camera" />
+      <h2>Vintage Camera</h2>
+      <p>Current Bid: $75</p>
+      <button class="bid-button">Place Bid</button>
+      <button class="more-details">More Details</button>
+    </article>
+  </section>
+
+</main>
 </body>
 </html>

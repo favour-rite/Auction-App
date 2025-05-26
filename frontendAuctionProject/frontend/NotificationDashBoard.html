@@ -5,28 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notification Dashboard</title>
   <link rel="stylesheet" href="NotificationDashBoard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <header>
+    <div class="logo">
+      <img src="images/bidderinagelogo.jpg" alt="BiddersHub Logo" />
+    </div>
     <h1>Notification Box</h1>
     <nav>
       <a href="MainDashboard.html">Dashboard</a>
-      <a href="NotificationDashBoard.html"> seller-notifications</a>
-      <a href="#">Logout</a>
+      <a href="MainDashboard.html"><i class="glyphicon glyphicon-home"></i></a>
+      <a href="userProfile.html"><i class="glyphicon glyphicon-user"></i></a>
+      <a href="shopping-cart.html"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+      <a href="signOut.html">SignOut</a>
     </nav>
   </header>
-
   <main class="notification-dashboard">
     
-    <section class="notifications seller-notifications">
-      <h2>Seller Notifications</h2>
+    <section class="notifications">
+      <h2>Notifications</h2>
       <div class="notification-card">
         <p><strong>Bid Received:</strong> Your product "Antique Vase" received a bid of $250.</p>
-        <span>2 minutes ago</span>
+        <time>2 minutes ago</time>
       </div>
       <div class="notification-card">
         <p><strong>Auction Closed:</strong> Your auction "Vintage Watch" has ended.</p>
-        <span>1 hour ago</span>
+        <time>1 hour ago</time>
       </div>
     </section>
 

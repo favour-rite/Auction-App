@@ -21,47 +21,49 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserLoginMapper userLoginMapper,UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserLoginMapper userLoginMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.UserLoginMapper = userLoginMapper;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
 
     @Override
     public UserSignUpResponse signUp(UserSignUpRequest userSignUpRequest) throws UserAlreadyExistException {
         if (userRepository.existsByEmail(userSignUpRequest.getEmail())) {
             throw new UserAlreadyExistException("User already exists!");
         }
-        User user = UserSignUpMapper.mapToUser(userSignUpRequest);
+        User user = UserSignUpMapper.mapToUserRequest(userSignUpRequest);
         user.setPassword(passwordEncoder.encode(userSignUpRequest.getPassword()));
         userRepository.save(user);
-        return UserSignUpMapper.mapToUserResponse("Account created successfully");
+        return UserSignUpMapper.mapToUserResponse("Account created successfully", user.getUserName());
     }
 
+
     @Override
-    public UserLoginResponse login(UserLoginRequest userRequest) {
+    public UserLoginResponse login(UserLoginRequest userRequest) throws InvalidPasswordException {
         Optional<User> existingUser = Optional.ofNullable(userRepository.findByEmail(userRequest.getEmail()));
         if (existingUser.isEmpty()) {
             throw new UserNotFoundException("User not found with email: " + userRequest.getEmail());
         }
         User user = existingUser.get();
         if (!passwordEncoder.matches(userRequest.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid password");
+            throw new InvalidPasswordException("Invalid password");
         }
         return UserLoginMapper.mapToUserResponse("User logged in successfully");
     }
 
     @Override
-    public User updateProfile(User user) {
+    public User updateProfile(UserSignUpRequest user) {
         User existingUser = userRepository.findByEmail(user.getEmail());
 
         if (existingUser == null) {
             throw new UserNotFoundException("User not found with email: " + user.getEmail());
         }
             existingUser.setUserName(user.getUserName());
-            existingUser.setGender(user.getGender());
             return userRepository.save(existingUser);
         }
+
 
 
 

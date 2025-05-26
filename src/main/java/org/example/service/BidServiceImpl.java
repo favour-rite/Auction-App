@@ -16,9 +16,15 @@ import java.util.List;
 public class BidServiceImpl implements BidService{
 
 
-    private BidRepository bidRepository;
-    private UserRepository userRepository;
-    private ProductRepository productRepository;
+    private final BidRepository bidRepository;
+    private final UserRepository userRepository;
+    private final ProductRepository productRepository;
+
+    public BidServiceImpl(BidRepository bidRepository, UserRepository userRepository, ProductRepository productRepository) {
+        this.bidRepository = bidRepository;
+        this.userRepository = userRepository;
+        this.productRepository = productRepository;
+    }
 
     @Override
     public Bid placeABidForAnAuctionBid(Product product, Bid bid) throws ProductNotFoundException, UserNotFoundException {
@@ -26,7 +32,7 @@ public class BidServiceImpl implements BidService{
             throw new ProductNotFoundException("Product not found");
         }
         if (bid.getBidAmount() <= product.getCurrentBidAmount()) {
-            throw new IllegalArgumentException("Bid amount must be higher than current bid");
+            throw new BidTooLowException("Bid amount must be higher than current bid");
         }
         bidRepository.save(bid);
         product.setCurrentBidAmount(bid.getBidAmount());

@@ -3,10 +3,10 @@ package org.example.Mapper;
 import org.example.data.models.User;
 import org.example.dtos.Request.UserLoginRequest;
 import org.example.dtos.Response.UserLoginResponse;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class UserLoginMapper {
-
     public static User mapToUser(UserLoginRequest userLoginRequest) {
         User user = new User();
         user.setEmail(userLoginRequest.getEmail());
